@@ -14,24 +14,31 @@ public class BaseTest {
 	
 WebDriver driver;
 	
-	@BeforeMethod
-	public void initBrowser() {		
-		// open the chrome browser 		
-		ChromeOptions options = new ChromeOptions();
+@BeforeMethod
+public void initBrowser() {
 
-		options.addArguments("--headless=new");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--disable-gpu");
-		options.addArguments("--window-size=1920,1080");
-		options.addArguments("--remote-allow-origins=*");
+    ChromeOptions options = new ChromeOptions();
 
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver(options);
-//		Open page
-		driver.get("https://practicetestautomation.com/practice-test-login/");	
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-	}
+    // Run headless only in CI (GitHub Actions)
+    if (System.getenv("CI") != null) {
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-extensions");
+        options.addArguments("--disable-infobars");
+    }
+
+    WebDriverManager.chromedriver().setup();
+    driver = new ChromeDriver(options);
+
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+    driver.manage().window().maximize();
+
+    // Open page
+    driver.get("https://practicetestautomation.com/practice-test-login/");
+}
 	
 	@AfterMethod
 	public void quiteBrowser() {
