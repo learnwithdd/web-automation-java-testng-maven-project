@@ -84,11 +84,11 @@
                 <version>3.2.5</version>
                 <configuration>
 					<!-- Uncomment and set path if using testng.xml suite -->
-					<!--
+			
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-                    -->
+                
                 </configuration>
             </plugin>
         </plugins>
