@@ -64,7 +64,7 @@ public class LoginTest extends BaseTest {
 
 	@Test(description = "Test case 2: Negative username test", priority = 2)
 
-	public void invalidUserLogin() {
+	public void invalidUserLogin() throws InterruptedException {
 
 //			Test case 2: Negative LogIn test
 
@@ -78,6 +78,8 @@ public class LoginTest extends BaseTest {
 
 //		Push Submit button submit
 		loginPage.clickOnSubmitButton();
+		
+		Thread.sleep(3000);
 
 //    		Verify error message is displayed
 		WebElement errorMessage = driver.findElement(By.xpath("//div[@id=\"error\"]"));
