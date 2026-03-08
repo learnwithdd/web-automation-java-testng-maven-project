@@ -44,12 +44,14 @@
             <version>5.5.0</version>
         </dependency>
 
-        <!-- Extent Reports -->
+        <!-- Extent Reports 
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
             <version>5.0.9</version>
         </dependency>
+        
+        -->
 
         <!-- SLF4J for cleaner logs -->
         <dependency>
